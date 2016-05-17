@@ -12,17 +12,5 @@
 */
 
 Route::get('/', function () {
-    return view('recepten');
-});
-
-Route::get('/login', function () {
-    return view('login');
-});
-
-Route::get('recepten', function () {
-    return view('recepten');
-});
-
-Route::get('recept', function () {
-    return view('recepten');
+    return view('welcome');
 });

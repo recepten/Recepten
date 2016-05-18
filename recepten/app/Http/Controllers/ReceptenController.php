@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use App\Http\Controllers\Controller;
 use App\User;
 use App\Company;
 use App\Auth;
@@ -18,14 +20,17 @@ class ReceptenController extends Controller
 
     public function index()
     {
+         $recepten = DB::table('recepten')->get();
 
-    	$recepten = Recepten::all();
+        return view('recepten', ['recepten' => $recepten]);
+
+    	/*$recepten = Recepten::all();
 
     	$data = [
     		'recepten' => $recepten
         ];
 
-        return view('dashboard')->with($data);
+        return view('dashboard')->with($data);*/
     }
 
 }

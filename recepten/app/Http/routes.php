@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('recepten');
-});
+Route::get('/', "ReceptenController@index");
 
 Route::get('/recept', function () {
     return view('recepten');

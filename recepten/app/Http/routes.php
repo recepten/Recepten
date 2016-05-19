@@ -13,15 +13,16 @@
 
 Route::get('/', "ReceptenController@index");
 
-Route::get('/recept', function () {
-    return view('recepten');
-});
 
-Route::get('recepten', function () {
-    return view('recepten');
-});
 
-Route::get('login', function () {
+Route::get('/login', function () {
     return view('login');
 });
 
+Route::get('/recepten', "ReceptenController@index", function () {
+    return view('recepten');
+});
+
+Route::get('/recept', function () {
+    return view('recepten');
+});

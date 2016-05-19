@@ -15,9 +15,19 @@ Route::get('/', "ReceptenController@index");
 
 
 
-Route::get('/login', function () {
-    return view('auth/login');
-});
+Route::get('/login', [
+	'uses' => 'Auth\AuthController@getLogin',
+	'as' => 'login.index',
+]);
+
+Route::get('/register', [
+	'uses' => 'Auth\AuthController@getRegister',
+	'as' => 'register.index',
+]);
+
+Route::post('/register', [
+	'uses' => 'Auth\AuthController@getRegister',
+]);
 
 Route::get('/recepten', "ReceptenController@index", function () {
     return view('recepten');
@@ -26,22 +36,21 @@ Route::get('/recepten', "ReceptenController@index", function () {
 Route::get('/recept', function () {
     return view('recepten');
 });
-Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
 
 
-// Authentication routes...
-Route::get('auth/login', 'Auth\AuthController@getLogin');
-Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
+ // Authentication routes...
+// Route::get('auth/login', 'Auth\AuthController@getLogin');
+// Route::post('auth/login', 'Auth\AuthController@postLogin');
+// Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
 // Registration routes...
-Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
+// Route::get('auth/register', 'Auth\AuthController@getRegister');
+// Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 
-Route::controllers([
-   'password' => 'Auth\PasswordController',
-]);
+// Route::controllers([
+//    'password' => 'Auth\PasswordController',
+// ]);

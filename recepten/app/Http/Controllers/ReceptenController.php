@@ -23,14 +23,6 @@ class ReceptenController extends Controller
          $recepten = DB::table('recepten')->get();
 
         return view('recepten', ['recepten' => $recepten]);
-
-    	/*$recepten = Recepten::all();
-
-    	$data = [
-    		'recepten' => $recepten
-        ];
-
-        return view('dashboard')->with($data);*/
     }
 
 }

@@ -2,10 +2,15 @@
 
 namespace App;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 
-class User extends Authenticatable
+
+Class User extends Model implements AuthenticatableContract
 {
+    use Authenticatable;
+
     protected $table = 'gebruikers';
 
 
@@ -15,7 +20,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'naam',
+        'wachtwoord',
+        'email',
     ];
 
     /**
@@ -24,6 +31,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'wachtwoord', 'remember_token',
     ];
 }

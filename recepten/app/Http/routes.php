@@ -20,13 +20,17 @@ Route::get('/login', [
 	'as' => 'login.index',
 ]);
 
+Route::post('/login', [
+	'uses' => 'Auth\AuthController@PostLogin',
+]);
+
 Route::get('/register', [
 	'uses' => 'Auth\AuthController@getRegister',
 	'as' => 'register.index',
 ]);
 
 Route::post('/register', [
-	'uses' => 'Auth\AuthController@getRegister',
+	'uses' => 'Auth\AuthController@PostRegister',
 ]);
 
 Route::get('/recepten', "ReceptenController@index", function () {

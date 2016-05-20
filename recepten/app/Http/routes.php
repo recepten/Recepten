@@ -15,23 +15,7 @@ Route::get('/', "ReceptenController@index");
 
 
 
-Route::get('/login', [
-	'uses' => 'Auth\AuthController@getLogin',
-	'as' => 'login.index',
-]);
 
-Route::post('/login', [
-	'uses' => 'Auth\AuthController@PostLogin',
-]);
-
-Route::get('/register', [
-	'uses' => 'Auth\AuthController@getRegister',
-	'as' => 'register.index',
-]);
-
-Route::post('/register', [
-	'uses' => 'Auth\AuthController@PostRegister',
-]);
 
 Route::get('/recepten', "ReceptenController@index", function () {
     return view('recepten');
@@ -43,6 +27,33 @@ Route::get('/recept', function () {
 
 Route::get('/home', 'HomeController@index');
 
+
+Route::get('/register', [
+    'uses' => 'AuthController@getRegister',
+    'as' => 'auth.register',
+    'middleware' => ['guest'],
+]);
+
+Route::post('/register', [
+    'uses' => '\app\Http\Controllers\AuthController@postRegister',
+    'middleware' => ['guest'],
+]);
+
+Route::get('/login', [
+    'uses' => '\app\Http\Controllers\AuthController@getLogin',
+    'as' => 'auth.login',
+    'middleware' => ['guest'],
+]);
+
+Route::post('/login', [
+    'uses' => '\app\Http\Controllers\AuthController@postLogin',
+    'middleware' => ['guest'],
+]);
+
+Route::get('/uitloggen', [
+    'uses' => '\app\Http\Controllers\AuthController@getSignout',
+    'as' => 'auth.signout',
+]);
 
 
  // Authentication routes...

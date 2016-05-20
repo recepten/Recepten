@@ -1,36 +1,24 @@
 <?php
 
-namespace App;
+namespace SocialApp\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 
-
 Class User extends Model implements AuthenticatableContract
 {
     use Authenticatable;
 
-    protected $table = 'gebruikers';
+    protected $table = 'users';
 
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
-        'naam',
-        'wachtwoord',
         'email',
+        'password',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
-        'wachtwoord', 'remember_token',
+        'password',
+        'remember_token',
     ];
 }

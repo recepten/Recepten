@@ -1,39 +1,52 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace SocialApp\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Validator;
 use Auth;
-use App\User;
+use Carbon\Carbon;
+use SocialApp\Models\User;
+use SocialApp\Models\Admin;
+use Illuminate\Http\Request;
+use SocialApp\Http\Requests\RegisterRequest;
+use SocialApp\Http\Requests\LoginRequest;
+use SocialApp\Http\Requests\AdminRegisterRequest;
 
+class AuthController extends Controller
+{
+    public function getRegister()
+    {
+        return view('auth.register');
+    }
 
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+    public function postRegister(RegisterRequest $request)
+    {
+        User::create([
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+            'birthdate' => $request->input('birthdate'),
+            'firstname' => $request->input('firstname'),
+            'lastname' => $request->input('lastname')
+        ]);
 
-Class AuthController extends Controller {
-	public function getLogin(){
-		return view('auth.login');
-	}
+        return redirect()
+            ->route('home')
+            ->with('info', 'Uw account is aangemaakt, u kunt nu inloggen');
+    }
 
-	public function getRegister(){
-		return view('auth.register');
-	}
+    public function getLogin()
+    {
+        return view('auth.login');
+    }
 
-	public function PostRegister(Request $request) {
+    public function postLogin(LoginRequest $request) {
+        if (!Auth::attempt($request->only(['email', 'password']), $request->has('remember'))) {
+            return redirect()->back()->with('info', 'Er kan niet ingelogd worden met het ingevulde email adres en wachtwoord, probeer het opnieuw');
+        }
+        return redirect()->route('home')->with('info', 'Je bent succesvol ingelogd');
+    }
 
-		// $this->validate($request, [
-		// 	'email' => 'required|email',
-		// 	'password' => 'required|min:8',
-		// ]);
-
-		User::create([
-			'naam' =>  $request->input('name'),
-			'email' => $request->input('email'),
-			'wachtwoord' => bcrypt($request->input('password'))
-		]);
-
-		return redirect()->route('login.index');
-	}
+    public function getSignout() {
+        Auth::logout();
+        return redirect()->route('home');
+    }
 }

@@ -1,17 +1,6 @@
-@extends('layouts.app')
+@extends('templates.default')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
-                <div class="panel-body">
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
+    <h3>SocialApp het social media platform voor 65 plussers</h3>
+    <p>Het beste social media platform voor 65+</p>
+@stop

@@ -5,7 +5,7 @@
     <h3>Inloggen</h3>
     <div class="row">
         <div class="col-lg-8">
-            <form class="form-vertical" role="form" method="post" action="{{ route('auth.login') }}">
+            <form class="form-vertical" role="form" method="post" action="{{ route('login.index') }}">
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                     <label for="email" class="control-label">Email</label>
                     <input type="text" name="email" class="form-control" id="email">
@@ -25,7 +25,7 @@
                         <input type="checkbox" name="remember"> Remember me
                     </label>
                 </div>
-                <span><a class="mtop15 forgetPass" href="{{ route('auth.forgetPass') }}">Wachtwoord vergeten?</a></span>
+
                 <div class="form-group">
                     <button type="submit" class="btn btn-default">Log nu in</button>
                 </div>

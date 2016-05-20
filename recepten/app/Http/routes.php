@@ -11,9 +11,38 @@
 |
 */
 
-Route::get('/', "ReceptenController@index");
+Route::get('/', [
+    'uses' => 'ReceptenController@index',
+    'as' => 'home',
+]);
 
 
+Route::get('/register', [
+    'uses' => 'AuthController@getRegister',
+    'as' => 'register.index',
+    'middleware' => ['guest'],
+]);
+
+Route::post('/register', [
+    'uses' => 'AuthController@postRegister',
+    'middleware' => ['guest'],
+]);
+
+Route::get('/login', [
+    'uses' => 'AuthController@getLogin',
+    'as' => 'login.index',
+    'middleware' => ['guest'],
+]);
+
+Route::post('/login', [
+    'uses' => 'AuthController@postLogin',
+    'middleware' => ['guest'],
+]);
+
+Route::get('/uitloggen', [
+    'uses' => 'AuthController@getSignout',
+    'as' => 'auth.signout',
+]);
 
 
 
@@ -22,50 +51,6 @@ Route::get('/recepten', "ReceptenController@index", function () {
 });
 
 Route::get('/recept', function () {
-    return view('recepten');
+    return view('recept');
 });
 
-Route::get('/home', 'HomeController@index');
-
-
-Route::get('/register', [
-    'uses' => 'AuthController@getRegister',
-    'as' => 'auth.register',
-    'middleware' => ['guest'],
-]);
-
-Route::post('/register', [
-    'uses' => '\app\Http\Controllers\AuthController@postRegister',
-    'middleware' => ['guest'],
-]);
-
-Route::get('/login', [
-    'uses' => '\app\Http\Controllers\AuthController@getLogin',
-    'as' => 'auth.login',
-    'middleware' => ['guest'],
-]);
-
-Route::post('/login', [
-    'uses' => '\app\Http\Controllers\AuthController@postLogin',
-    'middleware' => ['guest'],
-]);
-
-Route::get('/uitloggen', [
-    'uses' => '\app\Http\Controllers\AuthController@getSignout',
-    'as' => 'auth.signout',
-]);
-
-
- // Authentication routes...
-// Route::get('auth/login', 'Auth\AuthController@getLogin');
-// Route::post('auth/login', 'Auth\AuthController@postLogin');
-// Route::get('auth/logout', 'Auth\AuthController@getLogout');
-
-// Registration routes...
-// Route::get('auth/register', 'Auth\AuthController@getRegister');
-// Route::post('auth/register', 'Auth\AuthController@postRegister');
-
-
-// Route::controllers([
-//    'password' => 'Auth\PasswordController',
-// ]);

@@ -1,15 +1,12 @@
 <?php
 
-namespace SocialApp\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Auth;
-use Carbon\Carbon;
-use SocialApp\Models\User;
-use SocialApp\Models\Admin;
+use App\Models\User;
 use Illuminate\Http\Request;
-use SocialApp\Http\Requests\RegisterRequest;
-use SocialApp\Http\Requests\LoginRequest;
-use SocialApp\Http\Requests\AdminRegisterRequest;
+use App\Http\Requests\RegisterRequest;
+
 
 class AuthController extends Controller
 {
@@ -21,11 +18,10 @@ class AuthController extends Controller
     public function postRegister(RegisterRequest $request)
     {
         User::create([
+            'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
-            'birthdate' => $request->input('birthdate'),
-            'firstname' => $request->input('firstname'),
-            'lastname' => $request->input('lastname')
+
         ]);
 
         return redirect()
@@ -38,7 +34,7 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    public function postLogin(LoginRequest $request) {
+    public function postLogin(Request $request) {
         if (!Auth::attempt($request->only(['email', 'password']), $request->has('remember'))) {
             return redirect()->back()->with('info', 'Er kan niet ingelogd worden met het ingevulde email adres en wachtwoord, probeer het opnieuw');
         }

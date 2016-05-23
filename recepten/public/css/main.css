@@ -2,12 +2,17 @@ body {
     background-color: mediumseagreen;
 }
 
+.navbar-default, navbar-collapse{
+	background: #FFFFFF;
+	border-bottom-color: #1A4D31;
+}
+
 h1 {
     color: white;
     text-align: center;
 }
 
-p,h5 {
+p,h5,a {
     font-family: 'Kalam', cursive;
     font-size: 20px;
 }
@@ -18,4 +23,22 @@ p,h5 {
 	box-shadow: 10px 10px 5px #1A4D31;
 	padding: 5px;
 	margin-bottom: 20px;
+	float: left;
+	width: 100%;
+}
+
+.foto{
+	height: 150px;
+	width:150px;
+	background-color: grey;
+	text-align: center;
+}
+
+.left{
+	float:left;
+}
+
+.right{
+	padding-left:20px;
+	float: left;
 }

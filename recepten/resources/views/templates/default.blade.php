@@ -37,7 +37,7 @@
    <!-- gebruiker is ingelogd -->
 <?php else : ?>
   <li><a href="{{ route('login.index')}}">Login</a></li>
-  <li><a href="{{ route('register.index')}} "> Register</a></li>
+  <li><a href="{{ route('register.index')}} "> Registreren</a></li>
 <?php endif; ?>
 
         <li><a href="/recepten">Recepten</a></li>
@@ -45,10 +45,12 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Catagorieen <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">voorgerechten</a></li>
-            <li><a href="#">hoofdgerechten</a></li>
-            <li><a href="#">nagerechten</a></li>
-            <li><a href="#">cake,taart en gebak</a></li>
+            <li><a href="{{ route('voorgerechten.index')}}">voorgerechten</a></li>
+            <li><a href="{{ route('hoofdgerechten.index')}}">hoofdgerechten</a></li>
+            <li><a href="{{ route('nagerechten.index')}}">nagerechten</a></li>
+            <li><a href="{{ route('tussengerechten.index')}}">tussengerechten</a></li>
+            <li><a href="{{ route('cake.index')}}">cake,taart en gebak</a></li>
+            <li><a href="{{ route('overig.index')}}">nagerechten</a></li>
           </ul>
         </li>
               <?php if (Auth::check()) : ?>

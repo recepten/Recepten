@@ -25,4 +25,49 @@ class ReceptenController extends Controller
         return view('recepten', ['recepten' => $recepten]);
     }
 
+    public function voorgerechten()
+    {
+         $recepten = DB::table('recepten')->where('catagorieId', '1')->get();
+
+        return view('recepten', ['recepten' => $recepten]);
+    }
+
+    public function hoofdgerechten()
+    {
+         $recepten = DB::table('recepten')->where('catagorieId', '2')->get();
+
+        return view('recepten', ['recepten' => $recepten]);
+    }
+
+    public function nagerechten()
+    {
+         $recepten = DB::table('recepten')->where('catagorieId', '3')->get();
+
+        return view('recepten', ['recepten' => $recepten]);
+    }
+
+    public function tussengerechten()
+    {
+         $recepten = DB::table('recepten')->where('catagorieId', '4')->get();
+
+        return view('recepten', ['recepten' => $recepten]);
+    }
+
+    public function cake()
+    {
+         $recepten = DB::table('recepten')->where('catagorieId', '5')->get();
+
+        return view('recepten', ['recepten' => $recepten]);
+    }
+
+    public function overig()
+    {
+         $recepten = DB::table('recepten')->where('catagorieId', '6')->get();
+
+        return view('recepten', ['recepten' => $recepten]);
+    }
+
+
+
+
 }

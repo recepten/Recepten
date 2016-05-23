@@ -54,3 +54,31 @@ Route::get('/recept', function () {
     return view('recept');
 });
 
+
+// Catagorieen
+Route::get('/voorgerechten', [
+    'uses' => 'ReceptenController@voorgerechten',
+    'as' => 'voorgerechten.index',
+]);
+Route::get('/hoofdgerechten', [
+    'uses' => 'ReceptenController@hoofdgerechten',
+    'as' => 'hoofdgerechten.index',
+]);
+Route::get('/nagerechten', [
+    'uses' => 'ReceptenController@nagerechten',
+    'as' => 'nagerechten.index',
+]);
+Route::get('/tussengerechten', [
+    'uses' => 'ReceptenController@tussengerechten',
+    'as' => 'tussengerechten.index',
+]);
+Route::get('/cake-gebak-taart', [
+    'uses' => 'ReceptenController@cake',
+    'as' => 'cake.index',
+]);
+Route::get('/overig', [
+    'uses' => 'ReceptenController@overig',
+    'as' => 'overig.index',
+]);
+//eind catagorieen
+

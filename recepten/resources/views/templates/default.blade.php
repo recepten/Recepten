@@ -34,20 +34,14 @@
 
 
 <?php if(Auth::check()) : ?>
-
-
-   <li><a href="{{ route('auth.signout')}}">Uitloggen</a></li>
-
+   <!-- gebruiker is ingelogd -->
 <?php else : ?>
-<li><a href="{{ route('login.index')}}">Login</a></li>
-<li><a href="{{ route('register.index')}} "> Register</a></li>
+  <li><a href="{{ route('login.index')}}">Login</a></li>
+  <li><a href="{{ route('register.index')}} "> Register</a></li>
 <?php endif; ?>
 
-
-
-
-
         <li><a href="/recepten">Recepten</a></li>
+
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Catagorieen <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -57,12 +51,16 @@
             <li><a href="#">cake,taart en gebak</a></li>
           </ul>
         </li>
+              <?php if (Auth::check()) : ?>
+        <li><a href="{{ route('auth.signout')}}">Uitloggen</a></li>
+      <?php endif; ?>
+
       </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default">Zoek</button>
       </form>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

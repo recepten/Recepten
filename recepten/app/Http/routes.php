@@ -50,9 +50,11 @@ Route::get('/recepten', "ReceptenController@index", function () {
     return view('recepten');
 });
 
-Route::get('/recept', function () {
-    return view('recept');
-});
+Route::get('recept', [
+    'uses' => 'ReceptController@index',
+    'as' => 'recept.index',
+]);
+
 
 
 // Catagorieen

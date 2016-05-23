@@ -50,7 +50,7 @@ Route::get('/recepten', "ReceptenController@index", function () {
     return view('recepten');
 });
 
-Route::get('recept', [
+Route::get('recept/{id}', [
     'uses' => 'ReceptController@index',
     'as' => 'recept.index',
 ]);

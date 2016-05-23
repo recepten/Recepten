@@ -4,7 +4,7 @@
 @section('content')
 
 	@foreach($recepten as $recept)
-		<h5>{{ $recept->titel }}</h5>
+		<h5>{{$recept->titel }}</h5>
 		<p>{{$recept->ingredienten}}</p>
 		<p>{{$recept->beschrijving}}</p>
 

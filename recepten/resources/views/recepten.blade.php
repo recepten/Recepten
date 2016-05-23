@@ -11,7 +11,7 @@
 	</div>
 		<div class="right">
 			<h5 class="title">{{ $recept->titel }}</h5>
-		<p class="upvotes">{{$recept->upvotes}}</p>
+		<p class="upvotes">Upvotes: {{$recept->upvotes}}</p>
 		</div>
 	</div>
 	@endforeach

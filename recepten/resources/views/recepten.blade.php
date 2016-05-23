@@ -5,15 +5,17 @@
 <div class="container">
 
 	@foreach($recepten as $recept)
-	<div class="recept col-md-12">
-	<div class="left">
-		<div class="foto">(foto)</div>
-	</div>
-		<div class="right">
-			<h5 class="title">{{ $recept->titel }}</h5>
-		<p class="upvotes">Upvotes: {{$recept->upvotes}}</p>
+	<a href="{{ route('recept.index', $recept->id ) }}">
+		<div class="recept col-md-12">
+		<div class="left">
+			<div class="foto">(foto)</div>
 		</div>
-	</div>
+			<div class="right">
+				<h5 class="title">{{ $recept->titel }}</h5>
+			<p class="upvotes">Upvotes: {{$recept->upvotes}}</p>
+			</div>
+		</div>
+	</a>
 	@endforeach
 
 </div>

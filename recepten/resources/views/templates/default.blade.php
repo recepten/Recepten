@@ -2,9 +2,10 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<title>Document</title>
+		<title>Recepten</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/css/main.css">
+    <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet' type='text/css'>
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -29,8 +30,23 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="{{ route('login.index')}}">Login</a></li>
-        <li><a href="{{ route('register.index')}} "> Register</a></li>
+
+
+
+<?php if(Auth::check()) : ?>
+
+
+   <li><a href="{{ route('auth.signout')}}">Uitloggen</a></li>
+
+<?php else : ?>
+<li><a href="{{ route('login.index')}}">Login</a></li>
+<li><a href="{{ route('register.index')}} "> Register</a></li>
+<?php endif; ?>
+
+
+
+
+
         <li><a href="/recepten">Recepten</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Catagorieen <span class="caret"></span></a>

@@ -22,6 +22,11 @@ p,a {
     font-size: 15px;
 }
 
+button.navbar-toggle.collapsed{
+	float: left;
+    margin-left: 20px;
+}
+
 .recept{
 	background-color: white;
 	border-radius: 5px;

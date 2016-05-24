@@ -14,7 +14,7 @@ class ReceptController extends Controller
     {
          $recepten = DB::table('recepten')->where('receptId', $id)->get();
 
-        return view('recepten', ['recepten' => $recepten]);
+        return view('recept', ['recepten' => $recepten]);
     }
 
     public function recept_toevoegen()

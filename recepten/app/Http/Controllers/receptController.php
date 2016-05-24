@@ -15,4 +15,9 @@ class ReceptController extends Controller
 
         return view('recepten', ['recepten' => $recepten]);
     }
+
+            public function toevoegen()
+    {
+
+    }
 }

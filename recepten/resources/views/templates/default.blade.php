@@ -18,7 +18,7 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed navbar-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -35,6 +35,7 @@
 
 <?php if(Auth::check()) : ?>
    <!-- gebruiker is ingelogd -->
+   <li><a href="{{ route('recepttoevoegen.index')}}">Recept toevoegen</a></li>
 <?php else : ?>
   <li><a href="{{ route('login.index')}}">Login</a></li>
   <li><a href="{{ route('register.index')}} "> Registreren</a></li>

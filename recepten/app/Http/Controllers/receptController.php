@@ -9,15 +9,15 @@ use App\Http\Requests;
 
 class ReceptController extends Controller
 {
-        public function index($id)
+    public function index($id)
     {
          $recepten = DB::table('recepten')->where('receptId', $id)->get();
 
         return view('recepten', ['recepten' => $recepten]);
     }
 
-            public function toevoegen()
+    public function toevoegen()
     {
-
+    	return view('recepttoevoegen');
     }
 }

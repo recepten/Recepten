@@ -17,6 +17,7 @@ Route::get('/', [
 ]);
 
 
+
 Route::get('register', [
     'uses' => 'AuthController@getRegister',
     'as' => 'register.index',
@@ -64,6 +65,15 @@ Route::get('recepttoevoegen', [
     'as' => 'recepttoevoegen.index',
 ]);
 
+Route::get('recepttoevoegen/add', [
+    'uses' => 'ReceptController@toevoegen',
+    'as' => 'recepttoevoegen.add',
+]);
+
+
+
+
+
 
 
 // Catagorieen
@@ -91,5 +101,5 @@ Route::get('overig', [
     'uses' => 'ReceptenController@overig',
     'as' => 'overig.index',
 ]);
-//eind catagorieen
+//einde catagorieen
 

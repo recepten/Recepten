@@ -20,6 +20,15 @@ h5 {
 p,a {
     font-family: 'Kalam', cursive;
     font-size: 15px;
+
+}
+
+a{
+	color: black;
+}
+
+a:hover{
+	color: darkgreen;
 }
 
 button.navbar-toggle.collapsed{

@@ -51,19 +51,25 @@ Route::get('recepten', "ReceptenController@index", function () {
     return view('recepten');
 });
 
+Route::post('recept/opslaan', "ReceptController@recept_opslaan", function () {
+
+});
+
 Route::get('editrecept', "ReceptenController@index", function () {
     return view('recepten');
 });
+
+Route::get('recept/toevoegen', [
+    'uses' => 'ReceptController@recept_toevoegen',
+    'as' => 'recepttoevoegen.index',
+]);
 
 Route::get('recept/{id}', [
     'uses' => 'ReceptController@index',
     'as' => 'recept.index',
 ]);
 
-Route::get('recepttoevoegen', [
-    'uses' => 'ReceptController@toevoegen',
-    'as' => 'recepttoevoegen.index',
-]);
+
 
 Route::get('recepttoevoegen/add', [
     'uses' => 'ReceptController@toevoegen',

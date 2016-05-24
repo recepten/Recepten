@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 
 use App\Http\Requests;
+use App\Recept;
 
 class ReceptController extends Controller
 {
@@ -16,8 +17,24 @@ class ReceptController extends Controller
         return view('recepten', ['recepten' => $recepten]);
     }
 
-    public function toevoegen()
+    public function recept_toevoegen()
     {
     	return view('recepttoevoegen');
+
+    }
+
+    public function recept_opslaan(Request $request)
+    {
+
+    	 Recept::create([
+    	 	'titel' => $request->Titel,
+    	 	'catagorieId' => $request->catagorieId,
+    	 	'gebruikerId' => \Auth::id(),
+    	 	'beschrijving' => $request->beschrijving,
+    	 	'ingredienten' => $request->Ingredienten
+    	 ]);
+
+
+
     }
 }

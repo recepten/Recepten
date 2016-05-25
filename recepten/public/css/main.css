@@ -7,14 +7,13 @@ body {
 	box-shadow: 3px 3px 3px #1A4D31;
 }
 
-h1,h2,h3,h4 {
+h1,h2,h3,h4,h5 {
     color: white;
     text-align: center;
-}
-
-h5 {
-	font-family: 'Kalam', cursive;
-	font-size: 25px;
+    font-family: 'Kalam', cursive;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid white;
 }
 
 p,a {
@@ -53,6 +52,11 @@ button.navbar-toggle.collapsed{
 	text-align: center;
 }
 
+.title{
+	color: black;
+	font-size: 23px;
+}
+
 .left{
 	float:left;
 }
@@ -60,4 +64,9 @@ button.navbar-toggle.collapsed{
 .right{
 	padding-left:20px;
 	float: left;
+}
+
+label{
+	font-family: 'Kalam', cursive;
+	color: white;
 }

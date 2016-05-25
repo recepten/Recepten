@@ -42,4 +42,18 @@ class ReceptController extends Controller
 
 
     }
+
+        public function delete($id)
+    {
+
+        DB::table('recepten')->where('receptId', $id )->delete();
+
+
+         return redirect()
+            ->route('home')
+            ->with('info', 'Uw recept is verwijderd');
+
+
+
+    }
 }

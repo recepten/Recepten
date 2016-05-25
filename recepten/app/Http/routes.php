@@ -82,6 +82,12 @@ Route::get('recepttoevoegen/add', [
     'as' => 'recepttoevoegen.add',
 ]);
 
+Route::get('receptverwijderen/{id}', [
+    'uses' => 'ReceptController@delete',
+    'as' => 'receptverwijderen.index',
+]);
+
+
 Route::post('resultaten',[
     'as' => 'results.search',
     'uses' => 'QueryController@search',

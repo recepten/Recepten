@@ -55,7 +55,7 @@
             <li><a href="{{ route('overig.index')}}">Nagerechten</a></li>
           </ul>
         </li>
-              <?php if (Auth::check()) : ?>
+          <?php if (Auth::check()) : ?>
         <li><a href="{{ route('auth.signout')}}">Uitloggen</a></li>
       <?php endif; ?>
 

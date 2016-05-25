@@ -46,12 +46,12 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Catagorieen <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="{{ route('voorgerechten.index')}}">voorgerechten</a></li>
-            <li><a href="{{ route('hoofdgerechten.index')}}">hoofdgerechten</a></li>
-            <li><a href="{{ route('nagerechten.index')}}">nagerechten</a></li>
-            <li><a href="{{ route('tussengerechten.index')}}">tussengerechten</a></li>
-            <li><a href="{{ route('cake.index')}}">cake,taart en gebak</a></li>
-            <li><a href="{{ route('overig.index')}}">nagerechten</a></li>
+            <li><a href="{{ route('voorgerechten.index')}}">Voorgerechten</a></li>
+            <li><a href="{{ route('hoofdgerechten.index')}}">Hoofdgerechten</a></li>
+            <li><a href="{{ route('nagerechten.index')}}">Nagerechten</a></li>
+            <li><a href="{{ route('tussengerechten.index')}}">Tussengerechten</a></li>
+            <li><a href="{{ route('cake.index')}}">Cake,taart en gebak</a></li>
+            <li><a href="{{ route('overig.index')}}">Nagerechten</a></li>
           </ul>
         </li>
               <?php if (Auth::check()) : ?>

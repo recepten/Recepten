@@ -1,10 +1,10 @@
 body {
-    background-color: mediumseagreen;
+    background-color: #88e188;
 }
 
 .navbar-default, navbar-collapse{
 	background: #FFFFFF;
-	border-bottom-color: #1A4D31;
+	box-shadow: 3px 3px 3px #1A4D31;
 }
 
 h1,h2,h3,h4 {

@@ -10,6 +10,11 @@ use App\Recept;
 
 class ReceptController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('not_upvoted', ['only' => ['upvote']]);
+    }
+
     public function index($id)
     {
          $recepten = DB::table('recepten')->where('receptId', $id)->get();
@@ -43,7 +48,7 @@ class ReceptController extends Controller
 
     }
 
-        public function delete($id)
+    public function delete($id)
     {
 
         DB::table('recepten')->where('receptId', $id )->delete();
@@ -54,6 +59,18 @@ class ReceptController extends Controller
             ->with('info', 'Uw recept is verwijderd');
 
 
+
+    }
+
+    public function upvote($id)
+    {
+        $upvote = DB::table('upvotes')->insert([
+            'gebruikerId' => \Auth::id(),
+            'receptId' => $id
+        ]);
+
+        return redirect("recept/$id")
+            ->with('info', 'Uw recept is verwijderd');
 
     }
 }

@@ -86,6 +86,10 @@ Route::get('receptverwijderen/{id}', [
     'uses' => 'ReceptController@delete',
     'as' => 'receptverwijderen.index',
 ]);
+Route::get('receptupvoten/{id}', [
+    'uses' => 'ReceptController@upvote',
+    'as' => 'receptupvoten.index',
+]);
 
 
 Route::post('resultaten',[
@@ -125,3 +129,7 @@ Route::get('overig', [
 ]);
 //einde catagorieen
 
+
+Route::get('upvotesfor/{id}', function($id) {
+    return DB::table('upvotes')->where('receptId', $id)->count();
+});

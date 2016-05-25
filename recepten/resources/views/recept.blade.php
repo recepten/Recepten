@@ -3,7 +3,9 @@
 
 @section('content')
 
+
 	@foreach($recepten as $recept)
+	<?php $upvotes= \DB::table('upvotes')->where('receptId', $recept->receptId)->count(); ?>
 		<div class="recept col-md-12">
 		<div class="left">
 			<div class="foto"></div>
@@ -12,8 +14,12 @@
 				<p class="title">{{ $recept->titel }}</p>
 				<p class="ingredienten">{{$recept->ingredienten}}</p>
 				<p class="beschrijving">{{$recept->beschrijving}}</p>
-			<p class="upvotes">Upvotes: {{$recept->upvotes}}</p>
+			<p class="upvotes">Upvotes:{{$upvotes}} </p>
 			</div>
+
+			<?php if(Auth::check()) : ?>
+				<a href="{{ route('receptupvoten.index', $recept->receptId ) }}"><button id="Verwijderen" name="Verwijderen" class="btn btn-primary">Recept upvoten</button></a>
+			<?php endif; ?>
 			<?php if(Auth::id() == $recept->gebruikerId ) : ?>
 
 
@@ -22,6 +28,7 @@
 
 				<a href="{{ route('receptverwijderen.index', $recept->receptId ) }}"><button id="Verwijderen" name="Verwijderen" class="btn btn-primary">Recept verwijderen</button></a>
 			<?php endif; ?>
+
 		</div>
 	@endforeach
 @endsection

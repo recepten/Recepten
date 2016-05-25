@@ -13,7 +13,7 @@
 		</div>
 			<div class="right">
 				<p class="title">{{ $recept->titel }}</p>
-			<p class="upvotes">Upvotes: {{$recept->upvotes}}</p>
+			<p class="upvotes">Upvotes: {{$upvotes= \DB::table('upvotes')->where('receptId', $recept->receptId)->count()}}</p>
 			</div>
 		</div>
 	</a>

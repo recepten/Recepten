@@ -22,4 +22,9 @@ Class User extends Model implements AuthenticatableContract
         'password',
         'remember_token',
     ];
+
+    public function hasUpvoted($id)
+    {
+        return \DB::table('upvotes')->where('gebruikerId', $this->id)->where('receptId', $id)->count();
+    }
 }

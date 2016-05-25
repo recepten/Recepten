@@ -36,6 +36,7 @@
 <?php if(Auth::check()) : ?>
    <!-- gebruiker is ingelogd -->
    <li><a href="{{ route('recepttoevoegen.index')}}">Recept toevoegen</a></li>
+   <li><a href="{{ route('mijnrecepten.index')}}">Mijn recepten</a></li>
 <?php else : ?>
   <li><a href="{{ route('login.index')}}">Login</a></li>
   <li><a href="{{ route('register.index')}} "> Registreren</a></li>
@@ -59,11 +60,12 @@
       <?php endif; ?>
 
       </ul>
-      <form class="navbar-form navbar-left" role="search">
+      <form class="navbar-form navbar-left" action="{{ url('/resultaten')}}" role="search" method="POST">
+      <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="text" class="form-control" placeholder="Zoeken" id="search" name="search">
         </div>
-        <button type="submit" class="btn btn-default">Zoek</button>
+        <button type="submit" class="btn btn-default">Zoeken</button>
       </form>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

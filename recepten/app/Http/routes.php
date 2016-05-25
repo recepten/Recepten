@@ -51,6 +51,7 @@ Route::get('recepten', "ReceptenController@index", function () {
     return view('recepten');
 });
 
+
 Route::post('recept/opslaan', "ReceptController@recept_opslaan", function () {
 
 });
@@ -58,6 +59,11 @@ Route::post('recept/opslaan', "ReceptController@recept_opslaan", function () {
 Route::get('editrecept', "ReceptenController@index", function () {
     return view('recepten');
 });
+
+route::get('mijnrecepten',[
+    'uses' => 'ReceptenController@mijnrecepten',
+    'as' => 'mijnrecepten.index',
+]);
 
 Route::get('recept/toevoegen', [
     'uses' => 'ReceptController@recept_toevoegen',
@@ -76,6 +82,10 @@ Route::get('recepttoevoegen/add', [
     'as' => 'recepttoevoegen.add',
 ]);
 
+Route::post('resultaten',[
+    'as' => 'results.search',
+    'uses' => 'QueryController@search',
+]);
 
 
 

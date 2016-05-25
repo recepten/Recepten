@@ -35,6 +35,11 @@ class ReceptController extends Controller
     	 ]);
 
 
+         return redirect()
+            ->route('home')
+            ->with('info', 'Uw account is aangemaakt, u kunt nu inloggen');
+
+
 
     }
 }

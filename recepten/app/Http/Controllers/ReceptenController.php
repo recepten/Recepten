@@ -67,6 +67,13 @@ class ReceptenController extends Controller
         return view('recepten', ['recepten' => $recepten]);
     }
 
+        public function mijnrecepten()
+    {
+        $id = \Auth::id();
+         $recepten = DB::table('recepten')->where('gebruikerId', $id)->get();
+
+        return view('recepten', ['recepten' => $recepten]);
+    }
 
 
 

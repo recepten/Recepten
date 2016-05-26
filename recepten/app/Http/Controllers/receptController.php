@@ -45,8 +45,38 @@ class ReceptController extends Controller
             ->with('info', 'Uw account is aangemaakt, u kunt nu inloggen');
 
 
+    }
+
+        public function edit($id)
+    {
+         $recepten = DB::table('recepten')->where('receptId', $id)->get();
+
+        return view('receptbewerken', ['recepten' => $recepten]);
+    }
+
+
+        public function editsave($id, Request $request)
+    {
+
+         DB::table('recepten')
+            ->where('receptId', $id)
+            ->update(array( 'titel' => $request->Titel,
+                            'catagorieId'=> $request->catagorieId,
+                            'beschrijving' => $request->beschrijving,
+                            'ingredienten' => $request->Ingredienten));
+
+
+         return redirect()
+            ->route("recept.index", array('id' => $id))
+            ->with('info', 'Uw account is aangemaakt, u kunt nu inloggen');
+
 
     }
+
+
+
+
+
 
     public function delete($id)
     {

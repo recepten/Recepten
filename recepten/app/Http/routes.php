@@ -82,6 +82,18 @@ Route::get('recepttoevoegen/add', [
     'as' => 'recepttoevoegen.add',
 ]);
 
+
+Route::get('receptbewerken/{id}', [
+    'uses' => 'ReceptController@edit',
+    'as' => 'receptedit.index',
+]);
+
+Route::post('receptbewerken/opslaan/{id}', [
+    'uses' => 'ReceptController@editsave',
+    'as' => 'recepteditsave.index',
+]);
+
+
 Route::get('receptverwijderen/{id}', [
     'uses' => 'ReceptController@delete',
     'as' => 'receptverwijderen.index',

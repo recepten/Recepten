@@ -27,11 +27,7 @@
 				@endif
 			<?php endif; ?>
 			<?php if(Auth::id() == $recept->gebruikerId ) : ?>
-
-
-
-
-
+				<a href="{{ route('receptedit.index', $recept->receptId ) }}"><button id="edit" name="edit" class="btn btn-primary">Recept bewerken</button></a>
 				<a href="{{ route('receptverwijderen.index', $recept->receptId ) }}"><button id="Verwijderen" name="Verwijderen" class="btn btn-primary">Recept verwijderen</button></a>
 			<?php endif; ?>
 

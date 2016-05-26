@@ -18,7 +18,10 @@ class UserHasNotUpvotedYet
         $id = $request->id;
 
         if (\Auth::user()->hasUpvoted($id)) {
-            return redirect('recept/' . $id);
+
+
+            return redirect("recept/$id")
+            ->with('status', 'U heeft dit recept al geupvote');
         }
 
         return $next($request);

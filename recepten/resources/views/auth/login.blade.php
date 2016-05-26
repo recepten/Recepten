@@ -2,6 +2,11 @@
 
 @section('content')
 <div class="center">
+                 @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
     <h3>Inloggen</h3>
     <div class="row">
         <div class="col-lg-8">
@@ -31,6 +36,8 @@
                 </div>
                 <input type="hidden" name="_token" value="{{ Session::token() }}">
             </form>
+            <p>Nog geen account? Registreer je hier:.</p>
+            <a href="{{route('register.index')}}"><button type="submit" class="btn btn-default">Registreer</button></a>
         </div>
     </div>
 </div>

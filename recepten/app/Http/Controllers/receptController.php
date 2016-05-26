@@ -55,7 +55,7 @@ class ReceptController extends Controller
 
 
          return redirect()
-            ->route('home')
+            ->route('recepten')
             ->with('info', 'Uw recept is verwijderd');
 
 
@@ -70,7 +70,7 @@ class ReceptController extends Controller
         ]);
 
         return redirect("recept/$id")
-            ->with('info', 'Uw recept is verwijderd');
+            ->with('status', 'Uw recept is geupvote');
 
     }
 }

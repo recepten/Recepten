@@ -38,7 +38,7 @@ class AuthController extends Controller
         if (!Auth::attempt($request->only(['email', 'password']), $request->has('remember'))) {
             return redirect()->back()->with('info', 'Er kan niet ingelogd worden met het ingevulde email adres en wachtwoord, probeer het opnieuw');
         }
-        return redirect()->route('recepten.index')->with('info', 'Je bent succesvol ingelogd');
+        return redirect()->view('recepten')->with('info', 'Je bent succesvol ingelogd');
     }
 
     public function getSignout() {

@@ -37,7 +37,7 @@
 
 <!-- Textarea -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="beschrijving">Beschrijving</label>
+  <label class="col-md-4 control-label" for="beschrijving">beschrijving</label>
   <div class="col-md-4">
     <textarea class="form-control" id="beschrijving" name="beschrijving"></textarea>
   </div>
@@ -56,7 +56,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="Toevoegen"></label>
   <div class="col-md-4">
-    <button id="Toevoegen" name="Toevoegen" class="btn btn-primary">Recept bewerken</button>
+    <button id="Toevoegen" name="Toevoegen" class="btn btn-primary">Recept toevoegen</button>
   </div>
 </div>
 

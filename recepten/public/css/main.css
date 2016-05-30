@@ -7,7 +7,7 @@ body {
 	box-shadow: 3px 3px 3px #1A4D31;
 }
 
-h1,h2,h3,h4,h5 {
+h1,h2,h3,h4,h5,legend {
     color: white;
     text-align: center;
     font-family: 'Kalam', cursive;

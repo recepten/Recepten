@@ -11,6 +11,7 @@
     <div class="row">
         <div class="col-lg-8">
             <form class="form-vertical" role="form" method="post" action="{{ route('login.index') }}">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                     <label for="email" class="control-label">Email</label>
                     <input type="text" name="email" class="form-control" id="email">

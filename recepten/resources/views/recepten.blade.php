@@ -8,6 +8,8 @@
                         {{ session('status') }}
                     </div>
                 @endif
+
+
 	@foreach($recepten as $recept)
 
 	<a href="{{ route('recept.index', $recept->receptId ) }}">

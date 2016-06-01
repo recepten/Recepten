@@ -20,9 +20,10 @@
 			<?php if(Auth::check()) : ?>
 				<a href="{{ route('receptupvoten.index', $recept->receptId ) }}"><button id="Verwijderen" name="Verwijderen" class="btn btn-primary">
 				Recept upvoten</button></a>
-				<!-- <a href=""><button id="favoriet" name="favoriet" class="btn btn-primary">
-				Recept upvoten</button></a> -->
-				 @if (session('status'))
+				<a href="{{ route('favoriettoevoegen.index', $recept->receptId ) }}"><button id="favoriet" name="favoriet" class="btn btn-primary">
+				favoriet toevoegen</button></a>
+
+				@if (session('status'))
     				<div class="alert alert-success">
         				{{ session('status') }}
     				</div>

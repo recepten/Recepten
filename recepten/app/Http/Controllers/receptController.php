@@ -103,4 +103,17 @@ class ReceptController extends Controller
             ->with('status', 'Uw recept is geupvote');
 
     }
+
+        public function favorietToevoegen($id)
+    {
+        $upvote = DB::table('favorieten')->insert([
+            'gebruikerId' => \Auth::id(),
+            'receptId' => $id
+        ]);
+
+        return redirect("recept/$id")
+            ->with('status', 'Uw recept is geupvote');
+
+    }
 }
+

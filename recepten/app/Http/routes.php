@@ -103,6 +103,15 @@ Route::get('receptupvoten/{id}', [
     'as' => 'receptupvoten.index',
 ]);
 
+Route::get('favorieten', [
+    'uses' => 'ReceptenController@favorieten',
+    'as' => 'mijnfavorieten.index',
+]);
+
+Route::get('favorieten/{id}', [
+    'uses' => 'ReceptController@favorietToevoegen',
+    'as' => 'favoriettoevoegen.index',
+]);
 
 Route::post('resultaten',[
     'as' => 'results.search',

@@ -37,6 +37,7 @@
    <!-- gebruiker is ingelogd -->
    <li><a href="{{ route('recepttoevoegen.index')}}">Recept toevoegen</a></li>
    <li><a href="{{ route('mijnrecepten.index')}}">Mijn recepten</a></li>
+   <li><a href="{{route('mijnfavorieten.index')}}">Mijn favorieten</a></li>
 <?php else : ?>
   <li><a href="{{ route('login.index')}}">Login</a></li>
   <li><a href="{{ route('register.index')}} "> Registreren</a></li>
@@ -52,7 +53,7 @@
             <li><a href="{{ route('nagerechten.index')}}">Nagerechten</a></li>
             <li><a href="{{ route('tussengerechten.index')}}">Tussengerechten</a></li>
             <li><a href="{{ route('cake.index')}}">Cake,taart en gebak</a></li>
-            <li><a href="{{ route('overig.index')}}">Nagerechten</a></li>
+            <li><a href="{{ route('overig.index')}}">Overig</a></li>
           </ul>
         </li>
           <?php if (Auth::check()) : ?>

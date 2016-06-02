@@ -112,6 +112,14 @@ Route::get('favorieten/{id}', [
     'uses' => 'ReceptController@favorietToevoegen',
     'as' => 'favoriettoevoegen.index',
 ]);
+Route::get('favorietverijderen/{id}', [
+    'uses' => 'ReceptController@favorietVerwijderen',
+    'as' => 'favorietverwijderen.index',
+]);
+Route::get('favorietverijderenlijst/{id}', [
+    'uses' => 'ReceptController@favorietVerwijderenVanuitLijst',
+    'as' => 'favorietverwijderenlijst.index',
+]);
 
 Route::post('resultaten',[
     'as' => 'results.search',

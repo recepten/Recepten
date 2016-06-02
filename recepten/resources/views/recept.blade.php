@@ -14,17 +14,34 @@
 				<p class="title">{{ $recept->titel }}</p>
 				<p class="ingredienten">{{$recept->ingredienten}}</p>
 				<p class="beschrijving">{{$recept->beschrijving}}</p>
-			<p class="upvotes">Upvotes:{{$upvotes}} </p>
+			<!-- <p class="upvotes">Upvotes:{{$upvotes}} </p> -->
 			</div>
 
 			<?php if(Auth::check()) : ?>
 				<a href="{{ route('receptupvoten.index', $recept->receptId ) }}"><button id="Verwijderen" name="Verwijderen" class="btn btn-primary">
 				Recept upvoten</button></a>
-				<?php if() : ?>
 
-					<?php endif; ?>
-				<a href="{{ route('favoriettoevoegen.index', $recept->receptId ) }}"><button id="favoriet" name="favoriet" class="btn btn-primary">
+
+
+				<?php
+					$favorietCheck= DB::table('favorieten')
+									->select('receptId')
+									->where('gebruikerId', \Auth::id())
+									->where('receptId', $recept->receptId )
+									->get();
+				?>
+
+				@if ($favorietCheck)
+				<a href="{{ route('favorietverwijderen.index' , $recept->receptId) }}"><button id="favorietverwijderen" name="favorietverwijderen" class="btn btn-primary">
+				favoriet verwjideren</button></a>
+
+
+				@else
+					<a href="{{ route('favoriettoevoegen.index', $recept->receptId ) }}"><button id="favoriet" name="favoriet" class="btn btn-primary">
 				favoriet toevoegen</button></a>
+
+				@endif
+
 
 				@if (session('status'))
     				<div class="alert alert-success">

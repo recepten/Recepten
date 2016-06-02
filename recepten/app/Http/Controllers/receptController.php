@@ -94,7 +94,7 @@ class ReceptController extends Controller
 
     public function upvote($id)
     {
-        $upvote = DB::table('upvotes')->insert([
+        DB::table('upvotes')->insert([
             'gebruikerId' => \Auth::id(),
             'receptId' => $id
         ]);
@@ -104,15 +104,32 @@ class ReceptController extends Controller
 
     }
 
-        public function favorietToevoegen($id)
+    public function favorietToevoegen($id)
     {
-        $upvote = DB::table('favorieten')->insert([
+        DB::table('favorieten')->insert([
             'gebruikerId' => \Auth::id(),
             'receptId' => $id
         ]);
 
+    return redirect("recept/$id")
+            ->with('status', 'Uw recept is toegevoegd aan uw favorieten');
+
+    }
+
+    public function favorietVerwijderen($id)
+    {
+        DB::table('favorieten')->where('receptId', $id)->delete();
+
         return redirect("recept/$id")
-            ->with('status', 'Uw recept is geupvote');
+            ->with('status', 'Uw recept is verwijderd uit uw favorieten');
+
+    }
+    public function favorietVerwijderenVanuitLijst($id)
+    {
+        DB::table('favorieten')->where('receptId', $id)->delete();
+
+        return redirect("favorieten")
+            ->with('status', 'Uw recept is verwijderd uit uw favorieten');
 
     }
 }

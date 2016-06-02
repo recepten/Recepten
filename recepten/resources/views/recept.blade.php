@@ -20,6 +20,9 @@
 			<?php if(Auth::check()) : ?>
 				<a href="{{ route('receptupvoten.index', $recept->receptId ) }}"><button id="Verwijderen" name="Verwijderen" class="btn btn-primary">
 				Recept upvoten</button></a>
+				<?php if() : ?>
+
+					<?php endif; ?>
 				<a href="{{ route('favoriettoevoegen.index', $recept->receptId ) }}"><button id="favoriet" name="favoriet" class="btn btn-primary">
 				favoriet toevoegen</button></a>
 

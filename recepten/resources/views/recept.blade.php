@@ -14,7 +14,7 @@
 				<p class="title">{{ $recept->titel }}</p>
 				<p class="ingredienten">{{$recept->ingredienten}}</p>
 				<p class="beschrijving">{{$recept->beschrijving}}</p>
-			<!-- <p class="upvotes">Upvotes:{{$upvotes}} </p> -->
+				<p class="upvotes">Upvotes: {{$upvotes= \DB::table('upvotes')->where('receptId', $recept->receptId)->count()}}</p>
 			</div>
 
 			<?php if(Auth::check()) : ?>

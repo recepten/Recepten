@@ -162,3 +162,7 @@ Route::get('overig', [
 Route::get('upvotesfor/{id}', function($id) {
     return DB::table('upvotes')->where('receptId', $id)->count();
 });
+
+Route::get('/imageupload', 'UploadController@index');
+
+Route::post('add', 'UploadController@uploadFiles');

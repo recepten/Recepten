@@ -89,55 +89,51 @@ class ReceptController extends Controller
     }
 
 
-        public function editsave($id, Request $request)
+    public function editsave($id, Request $request)
     {
-
-        $input = Input::all();
-
         // VALIDATION RULES
-        $rules = array(
+        $rules = [
             'file' => 'image|max:3000',
-        );
+        ];
 
-       // PASS THE INPUT AND RULES INTO THE VALIDATOR
-        $validation = Validator::make($input, $rules);
+        // PASS THE INPUT AND RULES INTO THE VALIDATOR
+        $validation = Validator::make($request->all(), $rules);
 
         // CHECK GIVEN DATA IS VALID OR NOT
         if ($validation->fails()) {
-
             // return Redirect()->to('/')->with('status', "kan het bestabnd niet uploaden");
-
-
-
         }
 
+        $data = [
+            'titel' => $request->Titel,
+            'catagorieId'=> $request->catagorieId,
+            'beschrijving' => $request->beschrijving,
+            'ingredienten' => $request->Ingredienten
+        ];
 
-           $file = array_get($input,'file');
-           // SET UPLOAD PATH
+        // Als de request een bestand heeft...
+        if(isset($request->file) && $request->file !== '') {
+            $file = $request->file;
+
+            // SET UPLOAD PATH
             $destinationPath = 'uploads';
 
             // GET THE FILE EXTENSION
             $extension = $file->getClientOriginalExtension();
+
             // RENAME THE UPLOAD WITH RANDOM NUMBER
             $fileName = rand(11111, 99999) . '.' . $extension;
 
             // MOVE THE UPLOADED FILES TO THE DESTINATION DIRECTORY
-            $upload_success = $file->move($destinationPath, $fileName);
+            $file->move($destinationPath, $fileName);
 
-         DB::table('recepten')
-            ->where('receptId', $id)
-            ->update(array( 'titel' => $request->Titel,
-                            'catagorieId'=> $request->catagorieId,
-                            'beschrijving' => $request->beschrijving,
-                            'ingredienten' => $request->Ingredienten,
-                            'foto' => $fileName));
+            $data['foto'] = $fileName;
+        }
 
+        Recept::where('receptId', $id)->update($data);
 
-         return redirect()
-            ->route("recept.index", array('id' => $id))
-            ->with('info', 'Uw account is aangemaakt, u kunt nu inloggen');
-
-
+        return redirect()->route("recept.index", ['id' => $id])
+                         ->with('info', 'Uw account is aangemaakt, u kunt nu inloggen');
     }
 
 

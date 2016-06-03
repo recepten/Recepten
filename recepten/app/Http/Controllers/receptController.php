@@ -59,16 +59,17 @@ class ReceptController extends Controller
             // MOVE THE UPLOADED FILES TO THE DESTINATION DIRECTORY
             $upload_success = $file->move($destinationPath, $fileName);
 
-            $bestandsnaam = $fileName;
+
 
 
          Recept::create([
             'titel' => $request->Titel,
             'catagorieId' => $request->catagorieId,
             'gebruikerId' => \Auth::id(),
-            'foto' => $bestandsnaam,
             'beschrijving' => $request->beschrijving,
-            'ingredienten' => $request->Ingredienten
+            'ingredienten' => $request->Ingredienten,
+            'foto' => $fileName
+
          ]);
 
 

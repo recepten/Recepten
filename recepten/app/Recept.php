@@ -14,5 +14,6 @@ class Recept extends ModeL
 	'beschrijving',
 	'ingredienten',
 	'gebruikerId',
+	'foto',
     ];
 }

@@ -15,7 +15,7 @@
 	<a href="{{ route('recept.index', $recept->receptId ) }}">
 		<div class="recept col-md-12">
 		<div class="left">
-			<div class="foto"></div>
+			<div class="foto"><img src="uploads/{{$recept->foto}}" alt=""></div>
 		</div>
 			<div class="right">
 				<p class="title">{{ $recept->titel }}</p>

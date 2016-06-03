@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-
+use Validator;
 use App\Http\Requests;
 use App\Recept;
+use Illuminate\Support\Facades\Input;
 
 class ReceptController extends Controller
 {
@@ -30,14 +31,45 @@ class ReceptController extends Controller
 
     public function recept_opslaan(Request $request)
     {
+        // GET ALL THE INPUT DATA , $_GET,$_POST,$_FILES.
+        $input = Input::all();
 
-    	 Recept::create([
-    	 	'titel' => $request->Titel,
-    	 	'catagorieId' => $request->catagorieId,
-    	 	'gebruikerId' => \Auth::id(),
-    	 	'beschrijving' => $request->beschrijving,
-    	 	'ingredienten' => $request->Ingredienten
-    	 ]);
+        // VALIDATION RULES
+        $rules = array(
+            'file' => 'image|max:3000',
+        );
+
+       // PASS THE INPUT AND RULES INTO THE VALIDATOR
+        $validation = Validator::make($input, $rules);
+
+        // CHECK GIVEN DATA IS VALID OR NOT
+        if ($validation->fails()) {
+            return Redirect::to('/')->with('message', $validation->errors->first());
+        }
+
+
+           $file = array_get($input,'file');
+           // SET UPLOAD PATH
+            $destinationPath = 'uploads';
+            // GET THE FILE EXTENSION
+            $extension = $file->getClientOriginalExtension();
+            // RENAME THE UPLOAD WITH RANDOM NUMBER
+            $fileName = rand(11111, 99999) . '.' . $extension;
+
+            // MOVE THE UPLOADED FILES TO THE DESTINATION DIRECTORY
+            $upload_success = $file->move($destinationPath, $fileName);
+
+            $bestandsnaam = $fileName;
+
+
+         Recept::create([
+            'titel' => $request->Titel,
+            'catagorieId' => $request->catagorieId,
+            'gebruikerId' => \Auth::id(),
+            'foto' => $bestandsnaam,
+            'beschrijving' => $request->beschrijving,
+            'ingredienten' => $request->Ingredienten
+         ]);
 
 
          return redirect()
@@ -85,7 +117,7 @@ class ReceptController extends Controller
 
 
          return redirect()
-            ->route('recepten')
+            ->route("recepten.index", array('id' => $id))
             ->with('info', 'Uw recept is verwijderd');
 
 

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{ url('/recept/opslaan') }}" method="POST" class="form-horizontal">
+<form action="{{ url('/recept/opslaan') }}" enctype="multipart/form-data" method="POST" class="form-horizontal">
 
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -50,6 +50,11 @@
   <input id="Ingredienten" name="Ingredienten" type="text" placeholder="Ingredienten" class="form-control input-md" required="">
 
   </div>
+</div>
+
+<div class="form-group">
+<label class="col-md-4 control-label" for="foto">foto</label>
+  <input type="file" name="file">
 </div>
 
 <!-- Button -->

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{ route('recepteditsave.index', $recepten[0]->receptId) }}" method="POST" class="form-horizontal">
+<form action="{{ route('recepteditsave.index', $recepten[0]->receptId) }}" enctype="multipart/form-data" method="POST" class="form-horizontal">
 
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -50,6 +50,11 @@
   <input id="Ingredienten" name="Ingredienten" value="{{$recepten[0]->ingredienten}}" type="text" placeholder="Ingredienten" class="form-control input-md" required="">
 
   </div>
+</div>
+
+<div class="form-group">
+<label class="col-md-4 control-label" for="foto">foto</label>
+  <input type="file" name="file">
 </div>
 
 <!-- Button -->

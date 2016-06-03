@@ -8,7 +8,7 @@
 	<?php $upvotes= \DB::table('upvotes')->where('receptId', $recept->receptId)->count(); ?>
 		<div class="recept col-md-12">
 		<div class="left">
-			<div class="foto"></div>
+			<div class="foto"><img src="../uploads/{{$recept->foto}}" alt=""></div>
 		</div>
 			<div class="right">
 				<p class="title">{{ $recept->titel }}</p>

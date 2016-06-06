@@ -9,6 +9,7 @@ body {
 
 h1,h2,h3,h4,h5,legend {
     color: white;
+    font-weight: bold;
     text-align: center;
     font-family: 'Kalam', cursive;
     padding-bottom: 30px;
@@ -19,6 +20,7 @@ h1,h2,h3,h4,h5,legend {
 p,a {
     font-family: 'Kalam', cursive;
     font-size: 15px;
+    color: white;
 
 }
 
@@ -48,13 +50,19 @@ button.navbar-toggle.collapsed{
 .foto{
 	height: 150px;
 	width:150px;
-	background-color: grey;
 	text-align: center;
+	margin: 10px;
+}
+.foto, img{
+	max-width: 100%;
+	max-height: 100%;
+
 }
 
 .title{
 	color: black;
 	font-size: 23px;
+	font-weight: bold;
 }
 
 .left{
@@ -64,6 +72,9 @@ button.navbar-toggle.collapsed{
 .right{
 	padding-left:20px;
 	float: left;
+}
+.ingredienten, .beschrijving, .upvotes{
+	color: black;
 }
 
 label{

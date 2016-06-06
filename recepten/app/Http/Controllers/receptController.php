@@ -75,7 +75,7 @@ class ReceptController extends Controller
 
 
          return redirect()
-            ->route('home')
+            ->route('recept')
             ->with('info', 'Uw account is aangemaakt, u kunt nu inloggen');
 
 

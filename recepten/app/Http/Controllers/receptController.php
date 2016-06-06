@@ -76,7 +76,7 @@ class ReceptController extends Controller
 
          return redirect()
             ->route('home')
-            ->with('info', 'Uw account is aangemaakt, u kunt nu inloggen');
+            ->with('info', 'Uw reccept is aangemaakt, u kunt nu inloggen');
 
 
     }
@@ -101,7 +101,7 @@ class ReceptController extends Controller
 
         // CHECK GIVEN DATA IS VALID OR NOT
         if ($validation->fails()) {
-            // return Redirect()->to('/')->with('status', "kan het bestabnd niet uploaden");
+
         }
 
         $data = [

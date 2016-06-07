@@ -24,6 +24,7 @@
 		</div>
 	</a>
 	@endforeach
+	{!! $recepten->render() !!}
 
 </div>
 @endsection

@@ -20,49 +20,49 @@ class ReceptenController extends Controller
 
 	public function index()
 	{
-		 $recepten = DB::table('recepten')->get();
+		 $recepten = DB::table('recepten')->orderBy('created_at', 'desc')->simplePaginate(10);
 
 		return view('recepten', ['recepten' => $recepten]);
 	}
 
 	public function voorgerechten()
 	{
-		 $recepten = DB::table('recepten')->where('catagorieId', '1')->get();
+		 $recepten = DB::table('recepten')->where('catagorieId', '1')->orderBy('created_at', 'desc')->get();
 
 		return view('recepten', ['recepten' => $recepten]);
 	}
 
 	public function hoofdgerechten()
 	{
-		 $recepten = DB::table('recepten')->where('catagorieId', '2')->get();
+		 $recepten = DB::table('recepten')->where('catagorieId', '2')->orderBy('created_at', 'desc')->get();
 
 		return view('recepten', ['recepten' => $recepten]);
 	}
 
 	public function nagerechten()
 	{
-		 $recepten = DB::table('recepten')->where('catagorieId', '3')->get();
+		 $recepten = DB::table('recepten')->where('catagorieId', '3')->orderBy('created_at', 'desc')->get();
 
 		return view('recepten', ['recepten' => $recepten]);
 	}
 
 	public function tussengerechten()
 	{
-		 $recepten = DB::table('recepten')->where('catagorieId', '4')->get();
+		 $recepten = DB::table('recepten')->where('catagorieId', '4')->orderBy('created_at', 'desc')->get();
 
 		return view('recepten', ['recepten' => $recepten]);
 	}
 
 	public function cake()
 	{
-		 $recepten = DB::table('recepten')->where('catagorieId', '5')->get();
+		 $recepten = DB::table('recepten')->where('catagorieId', '5')->orderBy('created_at', 'desc')->get();
 
 		return view('recepten', ['recepten' => $recepten]);
 	}
 
 	public function overig()
 	{
-		 $recepten = DB::table('recepten')->where('catagorieId', '6')->get();
+		 $recepten = DB::table('recepten')->where('catagorieId', '6')->orderBy('created_at', 'desc')->get();
 
 		return view('recepten', ['recepten' => $recepten]);
 	}

@@ -26,11 +26,6 @@
                         <span class="help-block">{{ $errors->first('password') }}</span>
                     @endif
                 </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="remember"> Remember me
-                    </label>
-                </div>
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-default">Log nu in</button>

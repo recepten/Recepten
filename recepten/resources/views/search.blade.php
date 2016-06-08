@@ -19,6 +19,7 @@
 		</div>
 	</a>
         @endforeach
+         {!! $recepten->render() !!}
     @endif
 </div>
 @endsection

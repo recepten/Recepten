@@ -9,7 +9,11 @@
     				</div>
 				@endif
 
+    @if (count($recepten) === 0)
+    U heefd nog geen favorieten.
+@endif
 	@foreach($recepten as $recept)
+
 
 	<a href="{{ route('recept.index', $recept->receptId ) }}">
 		<div class="recept col-md-12">

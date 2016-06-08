@@ -4,6 +4,10 @@
 @section('content')
 <div class="container">
 
+    @if (count($recepten) === 0)
+    u heefd nog geen eigen recepten.
+@endif
+
 	@foreach($recepten as $recept)
 
 	<a href="{{ route('recept.index', $recept->receptId ) }}">

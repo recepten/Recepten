@@ -1,3 +1,5 @@
+<?php if (!Auth::check()) return Redirect::to('/'); ?>
+
 @extends('templates.default')
 
 @section('content')

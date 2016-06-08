@@ -37,6 +37,9 @@ class ReceptController extends Controller
         // VALIDATION RULES
         $rules = array(
             'file' => 'image|max:3000',
+            'Titel' => 'required',
+            'beschrijving' => 'required',
+            'Ingredienten' => 'required',
         );
 
        // PASS THE INPUT AND RULES INTO THE VALIDATOR
@@ -44,48 +47,57 @@ class ReceptController extends Controller
 
         // CHECK GIVEN DATA IS VALID OR NOT
         if ($validation->fails()) {
-            return Redirect::to('/')->with('message', $validation->errors->first());
+
+            return redirect()
+            ->back()
+            ->withInput()
+            ->withErrors($validation);
+
         }
 
+        $data = [
+            'titel' => $request->Titel,
+            'catagorieId' => $request->catagorieId,
+            'gebruikerId' => \Auth::id(),
+            'beschrijving' => $request->beschrijving,
+            'ingredienten' => $request->Ingredienten,
+        ];
 
-           $file = array_get($input,'file');
-           // SET UPLOAD PATH
+        if ($file = array_get($input, 'file', false)) {
+            // SET UPLOAD PATH
             $destinationPath = 'uploads';
 
             // GET THE FILE EXTENSION
             $extension = $file->getClientOriginalExtension();
+
             // RENAME THE UPLOAD WITH RANDOM NUMBER
             $fileName = rand(11111, 99999) . '.' . $extension;
 
             // MOVE THE UPLOADED FILES TO THE DESTINATION DIRECTORY
             $upload_success = $file->move($destinationPath, $fileName);
 
+            $data['foto'] = $fileName;
+        }
 
 
 
-         Recept::create([
-            'titel' => $request->Titel,
-            'catagorieId' => $request->catagorieId,
-            'gebruikerId' => \Auth::id(),
-            'beschrijving' => $request->beschrijving,
-            'ingredienten' => $request->Ingredienten,
-            'foto' => $fileName
 
-         ]);
+        Recept::create($data);
 
-
-         return redirect()
+        return redirect()
             ->route('home')
-            ->with('info', 'Uw reccept is aangemaakt, u kunt nu inloggen');
+            ->with('info', 'Uw reccept is succesvol toegevoegd');
+
+
 
 
     }
 
         public function edit($id)
     {
-         $recepten = DB::table('recepten')->where('receptId', $id)->get();
+         $recept = DB::table('recepten')->where('receptId', $id)->first();
 
-        return view('receptbewerken', ['recepten' => $recepten]);
+        return view('receptbewerken', ['recept' => $recept]);
     }
 
 
@@ -94,6 +106,9 @@ class ReceptController extends Controller
         // VALIDATION RULES
         $rules = [
             'file' => 'image|max:3000',
+            'Titel' => 'required',
+            'beschrijving' => 'required',
+            'Ingredienten' => 'required',
         ];
 
         // PASS THE INPUT AND RULES INTO THE VALIDATOR
@@ -101,6 +116,10 @@ class ReceptController extends Controller
 
         // CHECK GIVEN DATA IS VALID OR NOT
         if ($validation->fails()) {
+            return redirect()
+                    ->back()
+                    ->withInput()
+                    ->withErrors($validation);
 
         }
 
@@ -112,9 +131,7 @@ class ReceptController extends Controller
         ];
 
         // Als de request een bestand heeft...
-        if(isset($request->file) && $request->file !== '') {
-            $file = $request->file;
-
+        if($file = array_get($request, 'file', false)) {
             // SET UPLOAD PATH
             $destinationPath = 'uploads';
 
@@ -148,7 +165,7 @@ class ReceptController extends Controller
 
 
          return redirect()
-            ->route("recepten.index", array('id' => $id))
+            ->route("home", array('id' => $id))
             ->with('info', 'Uw recept is verwijderd');
 
 

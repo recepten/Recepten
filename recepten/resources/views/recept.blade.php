@@ -2,6 +2,11 @@
 
 
 @section('content')
+                 @if (session('foto'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
 
 
 	@foreach($recepten as $recept)
@@ -15,6 +20,7 @@
 				<p class="ingredienten">{{$recept->ingredienten}}</p>
 				<p class="beschrijving">{{$recept->beschrijving}}</p>
 				<p class="upvotes">Upvotes: {{$upvotes= \DB::table('upvotes')->where('receptId', $recept->receptId)->count()}}</p>
+								<p class="upvotes"> Categorie: <?php $categorie = \DB::table('categorieen')->select('catagorieNaam')->where('catagorieId', $recept->catagorieId)->get(); echo $categorie[0]->catagorieNaam; ?></p>
 			</div>
 
 			<?php if(Auth::check()) : ?>

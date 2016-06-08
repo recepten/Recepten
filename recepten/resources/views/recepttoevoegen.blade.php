@@ -11,11 +11,17 @@
 <!-- Form Name -->
 <legend>Recept toevoegen</legend>
 
+@if ($errors->any())
+    <div class="alert alert-success">
+        {{ $errors->first() }}
+    </div>
+@endif
+
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="Titel">Titel</label>
   <div class="col-md-4">
-  <input id="Titel" name="Titel" type="text" placeholder="Titel" class="form-control input-md" required="">
+  <input id="Titel" name="Titel" type="text" placeholder="Titel" class="form-control input-md" required="" value="{{old('Titel')}}">
 
   </div>
 </div>
@@ -39,7 +45,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="beschrijving">beschrijving</label>
   <div class="col-md-4">
-    <textarea class="form-control" id="beschrijving" name="beschrijving"></textarea>
+    <textarea class="form-control" id="beschrijving" name="beschrijving">{{ old('beschrijving') }}</textarea>
   </div>
 </div>
 
@@ -47,7 +53,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="Ingredienten">Ingredienten</label>
   <div class="col-md-4">
-  <input id="Ingredienten" name="Ingredienten" type="text" placeholder="Ingredienten" class="form-control input-md" required="">
+  <input id="Ingredienten" name="Ingredienten" type="text" placeholder="Ingredienten" class="form-control input-md" required="" value="{{ old('Ingredienten') }}">
 
   </div>
 </div>
@@ -61,7 +67,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="Toevoegen"></label>
   <div class="col-md-4">
-    <button id="Toevoegen" name="Toevoegen" class="btn btn-primary">Recept toevoegen</button>
+    <button id="Toevoegen" class="btn btn-primary">Recept toevoegen</button>
   </div>
 </div>
 

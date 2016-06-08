@@ -22,47 +22,49 @@ class ReceptenController extends Controller
 	{
 		 $recepten = DB::table('recepten')->orderBy('created_at', 'desc')->simplePaginate(10);
 
+
+
 		return view('recepten', ['recepten' => $recepten]);
 	}
 
 	public function voorgerechten()
 	{
-		 $recepten = DB::table('recepten')->where('catagorieId', '1')->orderBy('created_at', 'desc')->get();
+		 $recepten = DB::table('recepten')->where('catagorieId', '1')->orderBy('created_at', 'desc')->simplePaginate(10);
 
 		return view('recepten', ['recepten' => $recepten]);
 	}
 
 	public function hoofdgerechten()
 	{
-		 $recepten = DB::table('recepten')->where('catagorieId', '2')->orderBy('created_at', 'desc')->get();
+		 $recepten = DB::table('recepten')->where('catagorieId', '2')->orderBy('created_at', 'desc')->simplePaginate(10);
 
 		return view('recepten', ['recepten' => $recepten]);
 	}
 
 	public function nagerechten()
 	{
-		 $recepten = DB::table('recepten')->where('catagorieId', '3')->orderBy('created_at', 'desc')->get();
+		 $recepten = DB::table('recepten')->where('catagorieId', '3')->orderBy('created_at', 'desc')->simplePaginate(10);
 
 		return view('recepten', ['recepten' => $recepten]);
 	}
 
 	public function tussengerechten()
 	{
-		 $recepten = DB::table('recepten')->where('catagorieId', '4')->orderBy('created_at', 'desc')->get();
+		 $recepten = DB::table('recepten')->where('catagorieId', '4')->orderBy('created_at', 'desc')->simplePaginate(10);
 
 		return view('recepten', ['recepten' => $recepten]);
 	}
 
 	public function cake()
 	{
-		 $recepten = DB::table('recepten')->where('catagorieId', '5')->orderBy('created_at', 'desc')->get();
+		 $recepten = DB::table('recepten')->where('catagorieId', '5')->orderBy('created_at', 'desc')->simplePaginate(10);
 
 		return view('recepten', ['recepten' => $recepten]);
 	}
 
 	public function overig()
 	{
-		 $recepten = DB::table('recepten')->where('catagorieId', '6')->orderBy('created_at', 'desc')->get();
+		 $recepten = DB::table('recepten')->where('catagorieId', '6')->orderBy('created_at', 'desc')->simplePaginate(10);
 
 		return view('recepten', ['recepten' => $recepten]);
 	}
@@ -72,7 +74,7 @@ class ReceptenController extends Controller
 		$id = \Auth::id();
 		 $recepten = DB::table('recepten')->where('gebruikerId', $id)->get();
 
-		return view('recepten', ['recepten' => $recepten]);
+		return view('mijnrecepten', ['recepten' => $recepten]);
 	}
 
 

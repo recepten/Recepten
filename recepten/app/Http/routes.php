@@ -11,6 +11,13 @@
 |
 */
 
+// get/ is de url die je krijgt
+// uses geeft aan welke controller hij gebruikt en @ geeft aan welke functie die in de controller gebruikt
+// as geeft aan hoe je deze route kan aanroepen
+
+
+
+
 Route::get('/', [
     'uses' => 'ReceptenController@index',
     'as' => 'home',
@@ -21,18 +28,18 @@ Route::get('/', [
 Route::get('register', [
     'uses' => 'AuthController@getRegister',
     'as' => 'register.index',
-    'middleware' => ['guest'],
+
 ]);
 
 Route::post('register', [
     'uses' => 'AuthController@postRegister',
-    'middleware' => ['guest'],
+
 ]);
 
 Route::get('login', [
     'uses' => 'AuthController@getLogin',
     'as' => 'login.index',
-    'middleware' => ['guest'],
+
 ]);
 
 Route::post('login', [

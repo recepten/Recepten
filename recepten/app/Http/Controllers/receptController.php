@@ -42,10 +42,10 @@ class ReceptController extends Controller
             'Ingredienten' => 'required',
         );
 
-       // PASS THE INPUT AND RULES INTO THE VALIDATOR
+       // hier validate je de input met de rules dit geeft een true of false
         $validation = Validator::make($input, $rules);
 
-        // CHECK GIVEN DATA IS VALID OR NOT
+        // als de validate niet goed is wordt je doorgestuurd.
         if ($validation->fails()) {
 
             return redirect()
@@ -63,17 +63,18 @@ class ReceptController extends Controller
             'ingredienten' => $request->Ingredienten,
         ];
 
+        // als de request een file heeft
         if ($file = array_get($input, 'file', false)) {
-            // SET UPLOAD PATH
+            // hier kan je het pad invullen
             $destinationPath = 'uploads';
 
-            // GET THE FILE EXTENSION
+            // deze haalt de exensie van van de foto op
             $extension = $file->getClientOriginalExtension();
 
-            // RENAME THE UPLOAD WITH RANDOM NUMBER
+            // vernaderd de naam van het bestand  en zet de exensie er weer achter
             $fileName = rand(11111, 99999) . '.' . $extension;
 
-            // MOVE THE UPLOADED FILES TO THE DESTINATION DIRECTORY
+            // upload de foto naar de map
             $upload_success = $file->move($destinationPath, $fileName);
 
             $data['foto'] = $fileName;
@@ -111,10 +112,10 @@ class ReceptController extends Controller
             'Ingredienten' => 'required',
         ];
 
-        // PASS THE INPUT AND RULES INTO THE VALIDATOR
+        // hier validate je de input met de rules dit geeft een true of false
         $validation = Validator::make($request->all(), $rules);
 
-        // CHECK GIVEN DATA IS VALID OR NOT
+        // als de validate niet goed is wordt je doorgestuurd.
         if ($validation->fails()) {
             return redirect()
                     ->back()
@@ -132,16 +133,16 @@ class ReceptController extends Controller
 
         // Als de request een bestand heeft...
         if($file = array_get($request, 'file', false)) {
-            // SET UPLOAD PATH
+            // hier kan je het pad invullen
             $destinationPath = 'uploads';
 
-            // GET THE FILE EXTENSION
+            // deze haalt de exensie van van de foto op
             $extension = $file->getClientOriginalExtension();
 
-            // RENAME THE UPLOAD WITH RANDOM NUMBER
+            // vernaderd de naam van het bestand  en zet de exensie er weer achter
             $fileName = rand(11111, 99999) . '.' . $extension;
 
-            // MOVE THE UPLOADED FILES TO THE DESTINATION DIRECTORY
+            // upload de foto naar de map
             $file->move($destinationPath, $fileName);
 
             $data['foto'] = $fileName;

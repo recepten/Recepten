@@ -6,13 +6,8 @@
     <div class="row">
         <div class="col-lg-8">
             <form class="form-vertical" role="form" method="post" action="{{ route('register.index') }}">
-                <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                    <label for="name" class="control-label">Naam</label>
-                    <input type="text" name="name" class="form-control" id="name" value="{{ Request::old('name') ?: '' }}">
-                    @if ($errors->has('name'))
-                        <span class="help-block">{{ $errors->first('name') }}</span>
-                    @endif
-                </div>
+
+
 
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                     <label for="email" class="control-label">Email Adres</label>

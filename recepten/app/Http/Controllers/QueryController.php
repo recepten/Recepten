@@ -14,13 +14,14 @@ use Illuminate\Support\Facades\Input;
 
 class QueryController extends Controller
 {
+
+
     public function search(Request $request)
 	{
 
 
-    // Returns an array of articles that have the query string located somewhere within
-    // our articles titles. Paginates them so we can break up lots of search results.
-  	$recepten = DB::table('recepten')->where('titel', 'LIKE', '%' . $request->input('search') . '%')->simplePaginate(10);
+
+  	$recepten = DB::table('recepten')->where('titel', 'LIKE', '%' . $request->input('search') . '%')->get();
 
 	// returns a view and passes the view the list of articles and the original query.
     return view('search', compact('recepten', 'query'));

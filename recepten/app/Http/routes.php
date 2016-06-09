@@ -14,6 +14,7 @@
 // get/ is de url die je krijgt
 // uses geeft aan welke controller hij gebruikt en @ geeft aan welke functie die in de controller gebruikt
 // as geeft aan hoe je deze route kan aanroepen
+// middleware => auth geeft aan dat je alleen mag gebruiken als je ingelogd ben
 
 
 
@@ -44,7 +45,6 @@ Route::get('login', [
 
 Route::post('login', [
     'uses' => 'AuthController@postLogin',
-    'middleware' => ['guest'],
 ]);
 
 Route::get('uitloggen', [
@@ -70,12 +70,14 @@ Route::get('editrecept', "ReceptenController@index", function () {
 route::get('mijnrecepten',[
     'uses' => 'ReceptenController@mijnrecepten',
     'as' => 'mijnrecepten.index',
+    'middleware' => 'auth',
 ]);
 
 Route::get('recept/toevoegen', [
     'uses' => 'ReceptController@recept_toevoegen',
     'as' => 'recepttoevoegen.index',
-]);
+    'middleware' => 'auth',
+ ]);
 
 Route::get('recept/{id}', [
     'uses' => 'ReceptController@index',
@@ -113,6 +115,7 @@ Route::get('receptupvoten/{id}', [
 Route::get('favorieten', [
     'uses' => 'ReceptenController@favorieten',
     'as' => 'mijnfavorieten.index',
+    'middleware' => 'auth',
 ]);
 
 Route::get('favorieten/{id}', [
